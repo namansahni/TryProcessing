@@ -1,10 +1,11 @@
-import  processing.core.PApplet;
+import processing.core.PApplet;
 
 public class TryProcessing extends PApplet {
 
     public static final int WIDTH = 640;
     public static final int HEIGHT = 480;
-    public static final int DIAMETER = 100;
+    public static final int DIAMETER = 10;
+    public static int x_pos = 0;
 
     public static void main(String args[]) {
         PApplet.main("TryProcessing", args);
@@ -17,15 +18,24 @@ public class TryProcessing extends PApplet {
     }
 
     @Override
-    public void setup() {
-//        System.out.println("Testing setup method..");
-//        ellipse(WIDTH/2, HEIGHT/2, DIAMETER, DIAMETER);
+    public void draw() {
+
+        drawSketch();
     }
 
-    @Override
-    public void draw() {
-        ellipse(WIDTH/2, HEIGHT/2, DIAMETER, DIAMETER);
-//        System.out.println("Testing draw method..");
-//        super.draw();
+    private void drawSketch() {
+
+        for (int speed = 1; speed < 5; speed++) {
+            drawCircle(speed);
+        }
+
+        x_pos++;
     }
+
+    public void drawCircle(int speed) {
+        int x = speed * x_pos;
+        int y = (speed * HEIGHT) / 5;
+        ellipse(x, y, DIAMETER, DIAMETER);
+    }
+
 }
