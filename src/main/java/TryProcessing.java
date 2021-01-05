@@ -5,7 +5,8 @@ public class TryProcessing extends PApplet {
     public static final int WIDTH = 640;
     public static final int HEIGHT = 480;
     public static final int DIAMETER = 10;
-    public static int x_pos = 0;
+    public static int xPos = 0;
+    public static int yAxisDivider = 5;
 
     public static void main(String args[]) {
         PApplet.main("TryProcessing", args);
@@ -19,22 +20,20 @@ public class TryProcessing extends PApplet {
 
     @Override
     public void draw() {
-
         drawSketch();
     }
 
     private void drawSketch() {
-
         for (int speed = 1; speed < 5; speed++) {
             drawCircle(speed);
         }
 
-        x_pos++;
+        xPos++;
     }
 
     public void drawCircle(int speed) {
-        int x = speed * x_pos;
-        int y = (speed * HEIGHT) / 5;
+        int x = speed * xPos;
+        int y = (speed * HEIGHT) / yAxisDivider;
         ellipse(x, y, DIAMETER, DIAMETER);
     }
 
